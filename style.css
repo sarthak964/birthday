@@ -1,0 +1,452 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Microbe&display=swap");
+/* Your existing CSS styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('heart.png');
+  background-size: cover;
+  background-repeat: repeat;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  transition: background-image 0.5s ease;
+}
+
+.card-container {
+  width: 90%;
+  max-width: 400px;
+  background: linear-gradient(135deg, #ff0000, #8b0000);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+}
+
+.card h1 {
+  font-size: 2rem;
+  color: #d1bfc5;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1.2rem;
+  color: #d1bfc5;
+  margin-bottom: 20px;
+}
+
+.card button {
+  background-color: #e91e63;
+  color: #d1bfc5;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 5px;
+  font-family: cursive;
+}
+
+.card button:hover {
+  background-color: #ee2c76;
+}
+
+.hidden {
+  display: none;
+}
+
+#surprise {
+  font-size: .8rem;
+  color: #d4c8cd;
+  margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+  .card h1 {
+    font-size: 1.5rem;
+  }
+
+  .card p {
+    font-size: 1rem;
+  }
+
+  .card button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
+
+.slideshow-page {
+  display: none;
+  background-color: #D2D2D2;
+  background-image: url(bg.png);
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.banner {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.banner .slider {
+  position: absolute;
+  width: 200px;
+  height: 250px;
+  top: 10%;
+  left: calc(50% - 100px);
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  animation: autoRun 20s linear infinite;
+  z-index: 2;
+}
+
+@keyframes autoRun {
+  from {
+    transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+  }
+  to {
+    transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+  }
+}
+
+.banner .slider .item {
+  position: absolute;
+  inset: 0 0 0 0;
+  transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(550px);
+}
+
+.banner .slider .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner .content {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1400px, 100vw);
+  height: max-content;
+  padding-bottom: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+
+.banner .content h1 {
+  font-family: 'ICA Rubrik';
+  font-size: 16em;
+  line-height: 1em;
+  color: #25283B;
+  position: relative;
+}
+
+.banner .content h1::after {
+  position: absolute;
+  inset: 0 0 0 0;
+  content: attr(data-content);
+  z-index: 2;
+  -webkit-text-stroke: 2px #d2d2d2;
+  color: transparent;
+}
+
+.banner .content .author {
+  font-family: Poppins;
+  text-align: right;
+  max-width: 200px;
+}
+
+.banner .content h2 {
+  font-size: 1.8rem;
+}
+
+.banner .content .model {
+  background-image: url(image12.jpg);
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-size: auto 130%;
+  background-repeat: no-repeat;
+  background-position: top center;
+  z-index: 1;
+}
+
+@media screen and (max-width: 1023px) {
+  .banner .slider {
+    width: 160px;
+    height: 200px;
+    left: calc(50% - 80px);
+  }
+
+  .banner .slider .item {
+    transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(300px);
+  }
+
+  .banner .content h1 {
+    text-align: center;
+    width: 100%;
+    text-shadow: 0 10px 20px #000;
+    font-size: 7em;
+  }
+
+  .banner .content .author {
+    color: #fff;
+    padding: 20px;
+    text-shadow: 0 10px 20px #000;
+    z-index: 2;
+    max-width: unset;
+    width: 100%;
+    text-align: center;
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .banner .slider {
+    width: 100px;
+    height: 150px;
+    left: calc(50% - 50px);
+  }
+
+  .banner .slider .item {
+    transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) translateZ(180px);
+  }
+
+  .banner .content h1 {
+    font-size: 3.5em;
+  }
+}
+
+/* Quiz Container Styles */
+.quiz-container {
+  display: none; /* Hidden by default */
+  background-color: #f1f3f2;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  margin: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.quiz-slide {
+  display: none;
+}
+
+.quiz-slide.active {
+  display: block;
+}
+
+h1 {
+  font-family:cursive ;
+  color: #ae4367;
+  font-size: 2rem;
+}
+
+h2 {
+  color: #333;
+  font-size: .8rem;
+}
+
+p {
+  color: #e3dddd;
+  font-size: 1rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-weight: bold;
+}
+
+button {
+  background-color: #601f35;
+  color:#f3edee;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #d81b60;
+}
+
+.option-btn {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1rem;
+  background-color: #f7f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.option-btn:hover {
+  background-color: #ef9bc8;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    
+    font-size: 1.2rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  p {
+    color: rgb(13, 13, 12);
+    font-size: .8rem;
+  }
+
+  .quiz-container {
+    width: 90%;
+    
+    padding: 15px;
+    margin: 10px;
+  }
+}
+
+/* Scrapbook Styles */
+.scrapbook-container {
+  display: none; /* Hidden by default */
+  background-image: url(Victorian\ roses\ ~\ pretty\ paper\ 2\ ~\ lilac-n-lavender.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 30px 30px 30px rgba(12, 12, 12, 0.2);
+  padding: 20px;
+  border-radius: 30px;
+  margin: 20px auto;
+  width: 80vw;
+  max-width: 90%;
+}
+
+.scrapbook {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-image: url(background.jpg);
+  border-radius: 30px;
+  box-shadow: 30px 30px 30px rgba(12, 12, 12, 0.2);
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (9 / 16 * 100) */
+  border-radius: 20px; /* Add border radius to the video container */
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: #000; /* Background for video container */
+}
+
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensure video fits the container without cropping */
+  border-radius: 20px; /* Match border radius of container */
+}
+
+#play-button {
+padding: 10px 20px;
+font-size: 1em;
+background-color: #601f35;
+color: #f7f5f5;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+margin-top: 20px;
+margin-left: 20px; /* Add this line to move the button to the left */
+width: 100%; /* Full width on small screens */
+max-width: 200px; /* Limit width on larger screens */
+}
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  svg text {
+    font-size: 15vw; /* Larger font size for smaller screens */
+    stroke-width: 1.5; /* Adjust stroke width for smaller screens */
+  }
+
+  .wrapper, .scrapbook {
+    padding: 10px; /* Reduce padding on smaller screens */
+  }
+
+  h2 {
+    font-size: 1.5em; /* Smaller heading on smaller screens */
+  }
+
+  #play-button {
+    font-size: 1em; /* Smaller button text on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  svg text {
+    font-size: 11vw; /* Even larger font size for very small screens */
+    stroke-width: 1; /* Adjust stroke width for very small screens */
+  }
+
+  body {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .wrapper, .scrapbook {
+    margin: 10px auto; /* Reduce margin on very small screens */
+  }
+
+  .video-container {
+    padding-top: 177.78%; /* 9:16 Aspect Ratio for mobile */
+  }
+
+  #play-button {
+    max-width: 70%; /* Full width button on very small screens */
+  }
+}
+
+/* Fix for hover issue on mobile devices */
+@media (hover: none) and (pointer: coarse) {
+  svg text {
+    animation: none; /* Disable the stroke animation */
+    stroke: none; /* Remove stroke */
+    fill: #365FA0; /* Set a solid fill color */
+  }
+}
